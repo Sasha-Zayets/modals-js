@@ -1,0 +1,123 @@
+.modals {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    transition-duration: .5s;
+
+    &-container {
+        max-width: 500px;
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+    }
+
+    &-close {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        display: block;
+        border-radius: 50%;
+        border: 1px solid black;
+        right: -10px;
+        top: -22px;
+        cursor: pointer;
+
+        &:before, &:after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+           
+        }
+
+        &:before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &:after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    // animation
+        // scale animation 
+    &.show.scale .modals-container {
+        animation: scale .5s linear forwards;
+    }
+
+        // slide top animation
+    &.slideBottom {
+        transform: translateY(100%);
+    }
+
+    &.show.slideBottom {
+        transform: translateX(0%);
+    }
+
+        // slide top animation 
+    &.slideTop {
+        transform: translateY(-100%);
+    }
+
+    &.show.slideTop {
+        transform: translateX(0%);
+    }
+
+        //slide right animation
+    &.slideRight {
+        transform: translateX(100%);
+    }
+
+    &.show.slideRight {
+        transform: translateX(0%);
+    }
+
+        // slide left animation
+    &.slideLeft {
+        transform: translateX(-100%);
+    }
+
+    &.show.slideLeft {
+        transform: translateX(0%);
+    }
+
+        // fade animation
+    .fade {
+        opacity: 0;
+    }
+
+    &.show.fade {
+        opacity: 1;
+    }
+
+    &.show {
+        z-index: 99;
+        opacity: 1;
+    }
+}	
+
+/* scale keyframes */
+@keyframes scale {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
