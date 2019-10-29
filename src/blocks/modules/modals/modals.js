@@ -36,12 +36,11 @@ class Modal extends Elements {
         this.closeModal(this.modals, iconClose);
     }
 
-    addEvent () {
+   addEvent () {
         const btn = super.searchElement(`.${this.btnClickSelector}`);
-        const self = this;
         
-        btn.addEventListener('click', function (event) {
-            self.open();
+        btn.addEventListener('click', (event) => {
+            this.open();
         });
     }
 
