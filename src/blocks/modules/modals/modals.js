@@ -23,7 +23,6 @@ class Modal extends Elements {
     }
 
     init () {
-        // global vars modals
         this.modals = super.searchElement(`.${this.modalSelector}`);
 
         this.addEvent();
@@ -48,16 +47,15 @@ class Modal extends Elements {
 
     closeModal (...eventElement) {
         const modalContainer = this.modals.firstElementChild;
-        const self = this;
 
         eventElement.forEach(element => {
-            element.addEventListener('click', function (event) {
+            element.addEventListener('click', (event) => {
                 if (event.target.contains(modalContainer) && !event.target.classList.contains('modals-container')) {
                     if (!modalContainer.contains(event.target)) {
-                        self.fadeModal();
+                        this.fadeModal();
                     }
                 } else if (event.target.classList.contains('modals-close')) {
-                    self.fadeModal();
+                    this.fadeModal();
                 }
             });
         });
